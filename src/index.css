@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Peyda";
+    src: url(/font/Peyda-Medium.ttf);
+  }
+  @font-face {
+    font-family: "Peyda-light";
+    src: url(/font/Peyda-Light.ttf);
+  }
+  @font-face {
+    font-family: "Peyda-black";
+    src: url(/font/Peyda-Black.ttf);
+  }
+  @font-face {
+    font-family: "Peyda-med";
+    src: url(/font/Peyda-Medium.ttf);
+  }
+  .cus-scroll::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  .cus-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  .cus-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  .cus-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  @media (max-width: 768px) {
+    .rdrMonth {
+      width: 100% !important;
+    }
+  }
+  .hotel-facilities_wrapper__BVMON {
+    -moz-column-count: 3;
+    column-count: 3;
+    -moz-column-gap: 0;
+    column-gap: 0;
+    width: 100%;
+  }
+  .lh-2 {
+    line-height: 2;
+  }
+  .fs-7 {
+    font-size: 0.875rem !important;
+  }
+  .tw-mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+  .pat_dark {
+    --s: 50px;
+    --c: #191b22;
+    --_s: calc(2 * var(--s)) calc(2 * var(--s));
+    --_g: 35.36% 35.36% at;
+    --_c: #0000 66%, #20222a 68% 70%, #0000 72%;
+    background: radial-gradient(var(--_g) 100% 25%, var(--_c)) var(--s) var(--s) /
+        var(--_s),
+      radial-gradient(var(--_g) 0 75%, var(--_c)) var(--s) var(--s) / var(--_s),
+      radial-gradient(var(--_g) 100% 25%, var(--_c)) 0 0 / var(--_s),
+      radial-gradient(var(--_g) 0 75%, var(--_c)) 0 0 / var(--_s),
+      repeating-conic-gradient(var(--c) 0 25%, #0000 0 50%) 0 0 / var(--_s),
+      radial-gradient(var(--_c)) 0 calc(var(--s) / 2) / var(--s) var(--s)
+        var(--c);
+    background-attachment: fixed;
+  }
+}
