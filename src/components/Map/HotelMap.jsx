@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import useGeoLocation from "../../hooks/useGeoLocation";
 function HotelMap() {
   const { isLoading, hotels } = useHotels();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [mapCenter, setMapCenter] = useState([
     25.290880861396644, 60.62710096897881,
   ]);
@@ -16,7 +16,6 @@ function HotelMap() {
     isLoading: isLoadingGeoPosition,
     position: geoPosition,
     getPosition,
-    error,
   } = useGeoLocation();
   useEffect(() => {
     if (lat && lng) setMapCenter([lat, lng]);
@@ -47,7 +46,7 @@ function HotelMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <ChangeCenter position={mapCenter} zoom={lat && lng ? 18 : 4.5} />
+          <ChangeCenter position={mapCenter} zoom={lat && lng ? 16.5 : 4.5} />
           {!lat ? (
             hotels.map((item) => (
               <Marker key={item.id} position={[item.latitude, item.longitude]}>

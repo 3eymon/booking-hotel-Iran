@@ -14,7 +14,7 @@ function SingleHotel() {
     : false;
   if (isLoading) return <LoaderS />;
   return (
-    <div className="w-full mt-10 flex flex-col lg:flex-row  gap-2.5 dark:text-white">
+    <div className="w-full mt-10 flex flex-col lg:flex-row  gap-2.5 dark:text-white items-center lg:items-stretch">
       <div>
         <img
           src={hotel.large_url}

@@ -3,6 +3,7 @@ import { StarIcon } from "@heroicons/react/16/solid";
 import { Link } from "react-router-dom";
 import { useFavoriteList } from "./context/FavoriteProvider";
 import toast from "react-hot-toast";
+import { useAuth } from "./context/AuthProvider";
 
 function HotelCard({ item }) {
   const { favoriteList, setFavoriteList } = useFavoriteList();

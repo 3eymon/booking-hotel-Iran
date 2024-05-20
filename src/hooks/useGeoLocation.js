@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 function useGeoLocation() {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +19,7 @@ function useGeoLocation() {
       },
       (err) => {
         setError(err.message);
+        toast.error(err.message)
         setIsLoading(false);
       }
     );
