@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  #root > * {
+    transition: ease-in-out .3s;
+  }
   @font-face {
     font-family: "Peyda";
     src: url(/font/Peyda-Medium.ttf);

@@ -26,6 +26,7 @@
     "react-icons": "^4.12.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.1",
+    "sfcookies": "^1.0.2",
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {

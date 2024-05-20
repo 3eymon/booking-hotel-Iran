@@ -15,7 +15,9 @@ function App() {
     <AuthProvider>
       <HotelProvider>
         <FavoriteProvider>
-          <Toaster />
+          <div className="font-Peyda">
+            <Toaster />
+          </div>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<LocationList />} />
