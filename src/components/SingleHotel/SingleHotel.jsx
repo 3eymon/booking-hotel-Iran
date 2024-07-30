@@ -5,9 +5,7 @@ import LoaderS from "./LoaderS";
 import { useFavoriteList } from "../context/FavoriteProvider";
 function SingleHotel() {
   const { id } = useParams();
-  const { data: hotel, isLoading } = useFetch(
-    `http://localhost:5000/hotels/${id}`
-  );
+  const { data: hotel, isLoading } = useFetch(id);
   const { favoriteList, setFavoriteList } = useFavoriteList();
   const isFav = hotel
     ? favoriteList.map((f) => f.id).includes(hotel.id)

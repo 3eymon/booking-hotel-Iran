@@ -1,16 +1,21 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import api from "../backendless";
 
-export default function useFetch(url, query = "") {
+export default function useFetch(id, query = "") {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const { data } = await axios.get(`${url}?${query}`);
-        setData(data);
+        const { data } = await api.get(`/hotels.json`);
+        if (id) {
+          setData(data.filter((e) => e.id === id)[0]);
+        } else {
+          setData(data);
+        }
       } catch (err) {
         setData([]);
         toast.error(err?.message);
@@ -19,6 +24,6 @@ export default function useFetch(url, query = "") {
       }
     }
     fetchData();
-  }, [url, query]);
+  }, [id, query]);
   return { data, isLoading };
 }

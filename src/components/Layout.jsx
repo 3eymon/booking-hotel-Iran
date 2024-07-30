@@ -3,6 +3,7 @@ import Navbar from "./Navbar/Navbar";
 import QuiqNav from "./QuiqNav";
 import Modal from "./Modal";
 import { useRef, useState } from "react";
+import Footer from "./Footer/Footer";
 
 function Layout() {
   const bgFade = useRef(null);
@@ -17,6 +18,7 @@ function Layout() {
       ></div>
       <Modal onOpen={onOpen} setOnOpen={setOnOpen} />
       <Outlet />
+      <Footer />
     </div>
   );
 }

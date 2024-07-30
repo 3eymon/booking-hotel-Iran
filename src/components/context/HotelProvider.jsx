@@ -8,12 +8,22 @@ function HotelProvider({ children }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const city = searchParams.get("city");
   const room = JSON.parse(searchParams.get("options"))?.room;
-  const { data: hotels, isLoading } = useFetch(
-    "http://localhost:5000/hotels",
-    `q=${city !== "undefined" ? city : ""}&accommodates_gte=${room || 1}`
-  );
+  const { data, isLoading } = useFetch();
+  let hotels = [];
+  if (data) {
+    const filterCity = data.map((e) => {
+      if (e.name.includes(city)) {
+        return e;
+      }
+    });
+    hotels = filterCity
+      .filter((e) => e !== undefined)
+      .filter((e) => e.accommodates > room);
+  }
   return (
-    <HotelContext.Provider value={{ hotels, isLoading, city , inputValueHotel, setInputValueHotel }}>
+    <HotelContext.Provider
+      value={{ hotels, isLoading, city, inputValueHotel, setInputValueHotel }}
+    >
       {children}
     </HotelContext.Provider>
   );
