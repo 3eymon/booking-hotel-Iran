@@ -12,7 +12,7 @@ import { HiMinus } from "react-icons/hi";
 import { HiPlus } from "react-icons/hi";
 import { getAllProvinces } from "../..";
 import { getCitiesByProvinceName } from "../..";
-import useOutSideClick from "../../hooks/useOutSideClick";
+import useOutSideClick from "../../hooks/useOutsideClick";
 
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
