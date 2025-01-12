@@ -11,17 +11,44 @@ function Login() {
   } else {
     root.classList.add("light");
   }
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { Login, isAuthenticated } = useAuth();
-  const hanleSubmite = (e) => {
-    e.preventDefault();
-    if (email && password) Login(email, password);
+
+  const getSystemInfo = () => {
+    const userAgent = navigator.userAgent;
+    const platform = navigator.platform;
+    const browser = userAgent.includes("Chrome") ? "Chrome" : "Other"; // می‌توانید اطلاعات مرورگر را بیشتر سفارشی کنید
+    return { userAgent, platform, browser };
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (email && password) {
+      setIsLoading(true);
+      setErrorMessage("");
+      const systemInfo = getSystemInfo();
+
+      try {
+        await Login(email, password, systemInfo);
+      } catch (error) {
+        setErrorMessage("اطلاعات ورود اشتباه است.");
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      setErrorMessage("لطفا همه فیلدها را پر کنید.");
+    }
+  };
+
   useEffect(() => {
     if (isAuthenticated) navigate("/", { replace: true });
   }, [isAuthenticated, navigate]);
+
   return (
     <div className="h-screen flex font-PeydaLight flex-row-reverse transition-all ease-in-out">
       <Link
@@ -31,16 +58,25 @@ function Login() {
         <span>برگشت به صفحه اصلی</span>
         <ArrowLeftIcon className="w-4 pt-1" />
       </Link>
-      <img src="/architecture.webp" className="relative animate-fade animate-duration-1000 overflow-hidden md:flex w-1/2 bg-cover bg-no-repeat bg-center i justify-around items-center hidden object-cover" alt="ایرانی " />
-
+      <img
+        src="/architecture.webp"
+        className="relative animate-fade animate-duration-1000 overflow-hidden md:flex w-1/2 bg-cover bg-no-repeat bg-center i justify-around items-center hidden object-cover"
+        alt="ایرانی "
+      />
       <div className="flex w-full md:w-1/2 justify-center py-10 items-center bg-white dark:bg-transparent">
-        <form className="bg-white dark:bg-transparent" onSubmit={hanleSubmite}>
+        <form className="bg-white dark:bg-transparent" onSubmit={handleSubmit}>
           <h1 className="text-gray-800 font-bold text-2xl mb-1 dark:text-white">
             سلامی مجدد !
           </h1>
           <p className="text-sm font-normal text-gray-600 mb-7 dark:text-gray-300">
             برای شروع کار ایمیلتو میزنی لطفا :)
           </p>
+          
+          {/* نمایش خطا */}
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
+          )}
+
           <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4 animate-fade-left">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +95,7 @@ function Login() {
             <input
               onChange={(e) => setEmail(e.target.value)}
               className="pr-2 outline-none border-none dark:bg-transparent dark:text-white auto animate-fade-left"
-              type="email"
+              type="text"
               name="email"
               placeholder="آدرس ایمیل"
             />
@@ -69,7 +105,7 @@ function Login() {
             <input
               onChange={(e) => setPassword(e.target.value)}
               className="pr-2 outline-none border-none dark:bg-transparent dark:text-white font-Peyda animate-fade-left"
-              type="text"
+              type="password"
               name="password"
               id="password"
               placeholder="رمز عبور"
@@ -79,7 +115,7 @@ function Login() {
             type="submit"
             className="block w-full dark:bg-white bg-black text-white mt-4 py-2 rounded-2xl dark:text-black font-semibold mb-2 active:scale-95 transition-all ease-in-out"
           >
-            ورود
+            {isLoading ? "در حال ورود..." : "ورود"}
           </button>
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer dark:text-white dark:hover:text-blue-300">
             فراموشی رمز عبور ?

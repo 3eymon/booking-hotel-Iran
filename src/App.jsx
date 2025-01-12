@@ -9,6 +9,9 @@ import LocationList from "./components/LocatonList/LocationList";
 import Login from "./components/Auth/Login";
 import Layout from "./components/Layout";
 import AuthProvider from "./components/context/AuthProvider";
+import AdminRoute from "./components/Auth/AdminRoute";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+
 
 function App() {
   return (
@@ -27,15 +30,21 @@ function App() {
               </Route>
             </Route>
             <Route path="/login" element={<Login />} />
+
+            {/* مسیر ادمین */}
+            <Route
+              path="/profile"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
           </Routes>
         </FavoriteProvider>
-        
       </HotelProvider>
     </AuthProvider>
   );
 }
 
 export default App;
-
-
-

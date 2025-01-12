@@ -1,7 +1,6 @@
-// src/firebaseApi.js
 import axios from 'axios';
 
-const BASE_URL = 'https://booking-hotel-app-486fa-default-rtdb.firebaseio.com/';
+const BASE_URL = 'https://booking-backend-production-bbba.up.railway.app';
 
 const api = axios.create({
   baseURL: BASE_URL,

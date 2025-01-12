@@ -33,6 +33,7 @@
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.23.1",
     "sfcookies": "^1.0.2",
+    "swiper": "^11.2.1",
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
