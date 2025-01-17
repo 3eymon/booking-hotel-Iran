@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import api from "../backendless";
-
+import db from "../data.js";
 export default function useFetch(id, query = "") {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,8 +18,9 @@ export default function useFetch(id, query = "") {
         // دریافت پارامتر صفحه از URL
         const page = parseInt(searchParams.get("page") || "1", 10);
 
-        const { data } = await api.get(`/hotels/${page}`);
-        const hotels = data.hotels;
+        // const { data } = await api.get(`/hotels/${page}`);
+        // const hotels = data.hotels;
+        const hotels = db;
 
         setTotalPages(data.totalPages);
         setTotalHotels(data.totalHotels);
