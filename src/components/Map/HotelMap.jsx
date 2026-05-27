@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import { useHotels } from "../context/HotelProvider";
-import "../../map.css";
+// import "../../map.css";
+import 'leaflet/dist/leaflet.css';
 import { useSearchParams } from "react-router-dom";
 import useGeoLocation from "../../hooks/useGeoLocation";
 function HotelMap() {

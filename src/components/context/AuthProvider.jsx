@@ -32,7 +32,6 @@ export default function AuthProvider({ children }) {
 
   const [{ user, isAuthenticated }, dispatch] = useReducer(authReducer, initialState);
 
-  // تابع ورود کاربر
   async function Login(email, password) {
     try {
       const response = await axios.post("https://booking-backend-production-bbba.up.railway.app/admin", { email, password });
@@ -47,9 +46,9 @@ export default function AuthProvider({ children }) {
         });
 
         dispatch({ type: "login", payload: userResponse.data });
-        toast.success("ورود با موفقیت انجام شد!"); // نمایش پیام موفقیت
+        toast.success("ورود با موفقیت انجام شد!")
       } else {
-        toast.error(response.data.message || "خطا در ورود!"); // نمایش پیام خطا
+        toast.error(response.data.message || "خطا در ورود!"); 
       }
     } catch (error) {
       console.error("Login error: ", error);
@@ -84,7 +83,6 @@ export default function AuthProvider({ children }) {
 
   return (
     <>
-      {/* اضافه کردن ToastContainer برای نمایش پیام‌ها */}
       <AuthContext.Provider value={{ user, isAuthenticated, Login, LogOut }}>
         {children}
       </AuthContext.Provider>

@@ -2,13 +2,12 @@ import useFetch from "../../hooks/useFetch";
 import { useHotels } from "../context/HotelProvider";
 import HotelCard from "../HotelCard";
 import Loader from "../Loader";
-import React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useSearchParams } from "react-router-dom";
 
 function LocationList() {
-  const { data, isLoading, totalPages, totalHotels } = useFetch();
+  const { data, isLoading, totalPages } = useFetch();
   const { inputValueHotel, setInputValueHotel } = useHotels();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -35,7 +34,7 @@ function LocationList() {
           } overflow-hidden rounded-2xl transition-all ease-linear`}
       >
         <img
-          src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/a2/50/16/ghasr-monshi-hotel.jpg?w=1200&h=-1&s=1"
+          src="/index.jpg"
           className="w-full max-h-[30vh] sm:max-h-[50vh] rounded-2xl object-cover aspect-video my-10 brightness-50"
           alt="ایران هتل"
         />
@@ -46,13 +45,12 @@ function LocationList() {
         </div>
       </div>
       <div className="my-10">
-        <h2 className="text-3xl font-semibold mb-2 mr-2">هتل ها ({totalHotels})</h2>
+        <h2 className="text-3xl font-semibold mb-2 mr-2 dark:text-white">هتل ها ({findedHotel.length})</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-5 mx-auto z-0 justify-items-center">
           {findedHotel.map((item) => (
             <HotelCard key={item.id} item={item} />
           ))}
         </div>
-        {/* Pagination */}
         <Stack spacing={2} alignItems="center" className="mt-5">
           <Pagination
             count={totalPages}

@@ -31,7 +31,6 @@ function App() {
             </Route>
             <Route path="/login" element={<Login />} />
 
-            {/* مسیر ادمین */}
             <Route
               path="/profile"
               element={

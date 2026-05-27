@@ -22,7 +22,7 @@ function Login() {
   const getSystemInfo = () => {
     const userAgent = navigator.userAgent;
     const platform = navigator.platform;
-    const browser = userAgent.includes("Chrome") ? "Chrome" : "Other"; // می‌توانید اطلاعات مرورگر را بیشتر سفارشی کنید
+    const browser = userAgent.includes("Chrome") ? "Chrome" : "Other"; 
     return { userAgent, platform, browser };
   };
 

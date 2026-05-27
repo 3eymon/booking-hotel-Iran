@@ -15,11 +15,7 @@ export default function useFetch(id, query = "") {
       try {
         setIsLoading(true);
 
-        // دریافت پارامتر صفحه از URL
         const page = parseInt(searchParams.get("page") || "1", 10);
-
-        // const { data } = await api.get(`/hotels/${page}`);
-        // const hotels = data.hotels;
         const hotels = db;
 
         setTotalPages(data.totalPages);
